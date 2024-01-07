@@ -13,14 +13,13 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import ru.otus.di.domain.data.Data
 import ru.otus.di.domain.data.Employee
-import ru.otus.di.net.EmployeeService
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
     // Зависимость 2
     private val employeesDao = (application as MyDiApplication).employeeDao
 
     // Зависимость 3
-    private val network = EmployeeService()
+    private val network = (application as MyDiApplication).net
 
     val data: StateFlow<Data<Employee>?> = employeesDao
         .getList()
