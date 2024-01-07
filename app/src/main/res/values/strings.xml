@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">DI</string>
+    <string name="name">Name</string>
+    <string name="salary">Salary</string>
+    <string name="load">Load</string>
+    <string name="last_synced">Last synced: %1$tb-%1$te-%1$tY %1$tH:%1$tM:%1$tS</string>
+    <string name="not_synced">Not synced</string>
+</resources>
