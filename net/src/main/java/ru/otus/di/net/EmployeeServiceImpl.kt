@@ -8,12 +8,13 @@ import retrofit2.Retrofit
 import retrofit2.http.GET
 import ru.otus.di.domain.data.Data
 import ru.otus.di.domain.data.Employee
+import ru.otus.di.domain.net.EmployeeService
 import ru.otus.di.net.data.EmployeeDto
 import ru.otus.di.net.data.toDomain
 import java.time.ZonedDateTime
 import java.util.concurrent.TimeUnit
 
-class EmployeeService {
+class EmployeeServiceImpl : EmployeeService {
     private val okHttp = OkHttpClient.Builder()
         .connectTimeout(60, TimeUnit.SECONDS)
         .readTimeout(60, TimeUnit.SECONDS)
@@ -36,7 +37,7 @@ class EmployeeService {
     /**
      * Получить список работников
      */
-    suspend fun getEmployees(): Result<Data<Employee>> = runCatching {
+    override suspend fun getEmployees(): Result<Data<Employee>> = runCatching {
         Data(api.getEmployees().map { it.toDomain() }, ZonedDateTime.now())
     }
 }
