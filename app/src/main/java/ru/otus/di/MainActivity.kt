@@ -14,7 +14,9 @@ import ru.otus.di.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
     private val employeeAdapter = EmployeeAdapter()
     private lateinit var binding: ActivityMainBinding
-    private val model: MainViewModel by viewModels()
+    private val model: MainViewModel by viewModels {
+        MainViewModel.Factory(application)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
