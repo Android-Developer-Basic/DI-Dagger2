@@ -4,7 +4,6 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.room.Room
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -12,19 +11,13 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import ru.otus.di.db.EmployeeDb
 import ru.otus.di.domain.data.Data
 import ru.otus.di.domain.data.Employee
 import ru.otus.di.net.EmployeeService
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
-    // Зависимость 1
-    private val db = Room.databaseBuilder(application, EmployeeDb::class.java,"employees")
-        .fallbackToDestructiveMigration()
-        .build()
-
     // Зависимость 2
-    private val employeesDao = db.employees()
+    private val employeesDao = (application as MyDiApplication).employeeDao
 
     // Зависимость 3
     private val network = EmployeeService()
