@@ -12,16 +12,17 @@ import ru.otus.di.data.EmployeeEntity
 import ru.otus.di.data.EmployeesCache
 import ru.otus.di.data.toDomain
 import ru.otus.di.data.toEntity
+import ru.otus.di.domain.dao.EmployeeDao
 import ru.otus.di.domain.data.Data
 import ru.otus.di.domain.data.Employee
 
 @Dao
-abstract class EmployeeDao {
+abstract class EmployeeDaoImpl : EmployeeDao {
     /**
      * Записать новые данные
      */
     @Transaction
-    open fun replace(employees: Data<Employee>) {
+    override fun replace(employees: Data<Employee>) {
         delete()
         insert(CacheEntity(CACHE_NAME, employees.syncedAt))
         insert(employees.items.map { it.toEntity() })
@@ -30,7 +31,7 @@ abstract class EmployeeDao {
     /**
      * Прочитать список
      */
-    fun getList(): Flow<Data<Employee>?> = getAll().map { records ->
+    override fun getList(): Flow<Data<Employee>?> = getAll().map { records ->
         records.firstOrNull()?.let { record ->
             Data(record.employees.map { it.toDomain() }, record.cache.syncDateTime)
         }

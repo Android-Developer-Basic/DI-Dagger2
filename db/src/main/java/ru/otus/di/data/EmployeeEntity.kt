@@ -2,7 +2,7 @@ package ru.otus.di.data
 
 import androidx.room.Entity
 import androidx.room.ForeignKey
-import ru.otus.di.db.EmployeeDao
+import ru.otus.di.db.EmployeeDaoImpl
 import ru.otus.di.domain.data.Employee
 
 @Entity(
@@ -27,4 +27,4 @@ internal data class EmployeeEntity(
 )
 
 internal fun EmployeeEntity.toDomain(): Employee = Employee(id, name, salary, age)
-internal fun Employee.toEntity(): EmployeeEntity = EmployeeEntity(EmployeeDao.CACHE_NAME, id, name, salary, age)
+internal fun Employee.toEntity(): EmployeeEntity = EmployeeEntity(EmployeeDaoImpl.CACHE_NAME, id, name, salary, age)

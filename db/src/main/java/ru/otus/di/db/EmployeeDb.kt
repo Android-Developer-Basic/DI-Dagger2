@@ -14,5 +14,5 @@ import ru.otus.di.data.EmployeeEntity
     value = [Converters::class]
 )
 abstract class EmployeeDb : RoomDatabase() {
-    abstract fun employees(): EmployeeDao
+    abstract fun employees(): EmployeeDaoImpl
 }
