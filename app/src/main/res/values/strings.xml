@@ -5,4 +5,7 @@
     <string name="load">Load</string>
     <string name="last_synced">Last synced: %1$tb-%1$te-%1$tY %1$tH:%1$tM:%1$tS</string>
     <string name="not_synced">Not synced</string>
+    <string name="details_name">Name: %s</string>
+    <string name="details_salary">Salary: %d</string>
+    <string name="details_age">"Age: %d"</string>
 </resources>

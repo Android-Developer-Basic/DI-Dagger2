@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import ru.otus.di.domain.data.Employee
 
 
-class EmployeeAdapter : ListAdapter<Employee, EmployeeAdapter.Holder>(EmployeeDiffCallback) {
+class EmployeeAdapter(private val onClick: (Int) -> Unit) : ListAdapter<Employee, EmployeeAdapter.Holder>(EmployeeDiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder = Holder(
         LayoutInflater.from(parent.context).inflate(R.layout.viewholder_employee, parent, false)
@@ -20,11 +20,20 @@ class EmployeeAdapter : ListAdapter<Employee, EmployeeAdapter.Holder>(EmployeeDi
         holder.bind(getItem(position))
     }
 
-    class Holder(itemView: View) : ViewHolder(itemView) {
+    inner class Holder(itemView: View) : ViewHolder(itemView) {
         private val name: TextView = itemView.findViewById(R.id.name)
         private val salary: TextView = itemView.findViewById(R.id.salary)
 
+        private var id: Int = -1
+
+        init {
+            itemView.setOnClickListener {
+                onClick(id)
+            }
+        }
+
         fun bind(employee: Employee) {
+            id = employee.id
             name.text = employee.name
             salary.text = employee.salary.toString()
         }
