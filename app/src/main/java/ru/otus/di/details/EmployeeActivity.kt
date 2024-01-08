@@ -11,8 +11,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import kotlinx.coroutines.launch
 import ru.otus.di.R
+import ru.otus.di.component
 import ru.otus.di.databinding.ActivityEmployeeBinding
 import ru.otus.di.domain.data.Employee
+import javax.inject.Inject
 
 class EmployeeActivity : AppCompatActivity() {
     companion object {
@@ -29,13 +31,27 @@ class EmployeeActivity : AppCompatActivity() {
     }
 
     private lateinit var binding: ActivityEmployeeBinding
-    private val model: EmployeeViewModel by viewModels {
-        EmployeeViewModel.Factory(application, intent.employeeId)
-    }
 
+    /**
+     * Эта переменная будет инициализирована после вызова
+     * [EmployeeActivitySubcomponent.inject]
+     */
+    @Inject
+    lateinit var vmFactory: EmployeeViewModel.Factory
+
+    private val model: EmployeeViewModel by viewModels { vmFactory }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Создаем под-дерево и "впрыскиваем" зависимости
+        // Используйте, когда невозможно использовать конструктор
+        application.component
+            .employeeActivityComponent()
+            .employeeModule(EmployeeActivityModule(intent.employeeId))
+            .build()
+            .inject(this)
+
         binding = ActivityEmployeeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 

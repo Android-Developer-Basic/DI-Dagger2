@@ -3,8 +3,8 @@ package ru.otus.di
 import android.content.Context
 import dagger.BindsInstance
 import dagger.Component
+import ru.otus.di.details.EmployeeActivitySubcomponent
 import ru.otus.di.domain.dao.EmployeeDao
-import ru.otus.di.domain.dao.EmployeeDetailsDao
 import javax.inject.Singleton
 
 @Singleton
@@ -18,5 +18,5 @@ interface AppComponent {
 
     fun employeeDao(): EmployeeDao
 
-    fun employeeDetailsDao(): EmployeeDetailsDao
+    fun employeeActivityComponent(): EmployeeActivitySubcomponent.Builder
 }
