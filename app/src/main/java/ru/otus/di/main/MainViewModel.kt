@@ -1,6 +1,5 @@
 package ru.otus.di.main
 
-import android.app.Application
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -12,11 +11,11 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
-import ru.otus.di.MyDiApplication
 import ru.otus.di.domain.dao.EmployeeDao
 import ru.otus.di.domain.data.Data
 import ru.otus.di.domain.data.Employee
 import ru.otus.di.domain.net.EmployeeService
+import javax.inject.Inject
 
 class MainViewModel(
     private val employeesDao: EmployeeDao,
@@ -47,13 +46,14 @@ class MainViewModel(
         private const val TAG = "MainViewModel"
     }
 
-    class Factory(application: Application) : ViewModelProvider.Factory {
-        private val diApp = application as MyDiApplication
-
+    class Factory @Inject constructor(
+        private val employeeDao: EmployeeDao,
+        private val employeeService: EmployeeService
+    ) : ViewModelProvider.Factory {
         @Suppress("UNCHECKED_CAST")
         override fun <T : ViewModel> create(modelClass: Class<T>): T = MainViewModel(
-            diApp.component.employeeDao(),
-            diApp.component.employeeService()
+            employeeDao,
+            employeeService
         ) as T
     }
 }

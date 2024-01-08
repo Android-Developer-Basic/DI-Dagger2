@@ -10,20 +10,25 @@ import androidx.recyclerview.widget.ConcatAdapter
 import com.google.android.material.divider.MaterialDividerItemDecoration
 import kotlinx.coroutines.launch
 import ru.otus.di.R
+import ru.otus.di.component
 import ru.otus.di.databinding.ActivityMainBinding
 import ru.otus.di.details.EmployeeActivity
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var component: MainActivityComponent
+
     private val employeeAdapter = EmployeeAdapter {
         EmployeeActivity.launch(this, it)
     }
     private lateinit var binding: ActivityMainBinding
-    private val model: MainViewModel by viewModels {
-        MainViewModel.Factory(application)
-    }
+
+    private val model: MainViewModel by viewModels { component.vmFactory() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        component = DaggerMainActivityComponent.factory().build(application.component)
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
