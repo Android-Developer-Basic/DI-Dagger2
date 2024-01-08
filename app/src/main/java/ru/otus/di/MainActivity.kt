@@ -12,7 +12,9 @@ import kotlinx.coroutines.launch
 import ru.otus.di.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    private val employeeAdapter = EmployeeAdapter()
+    private val employeeAdapter = EmployeeAdapter {
+        EmployeeActivity.launch(this, it)
+    }
     private lateinit var binding: ActivityMainBinding
     private val model: MainViewModel by viewModels {
         MainViewModel.Factory(application)

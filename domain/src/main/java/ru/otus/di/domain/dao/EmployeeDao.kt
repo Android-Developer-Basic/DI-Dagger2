@@ -15,3 +15,10 @@ interface EmployeeDao {
      */
     fun getList(): Flow<Data<Employee>?>
 }
+
+interface EmployeeDetailsDao {
+    /**
+     * Прочитать работника по [id]
+     */
+    fun getEmployee(id: Int): Flow<Employee?>
+}

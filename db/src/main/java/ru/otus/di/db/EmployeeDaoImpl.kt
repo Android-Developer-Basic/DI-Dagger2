@@ -13,11 +13,12 @@ import ru.otus.di.data.EmployeesCache
 import ru.otus.di.data.toDomain
 import ru.otus.di.data.toEntity
 import ru.otus.di.domain.dao.EmployeeDao
+import ru.otus.di.domain.dao.EmployeeDetailsDao
 import ru.otus.di.domain.data.Data
 import ru.otus.di.domain.data.Employee
 
 @Dao
-abstract class EmployeeDaoImpl : EmployeeDao {
+abstract class EmployeeDaoImpl : EmployeeDao, EmployeeDetailsDao {
     /**
      * Записать новые данные
      */
@@ -40,7 +41,7 @@ abstract class EmployeeDaoImpl : EmployeeDao {
     /**
      * Прочитать работника по [id]
      */
-    fun getEmployee(id: Int): Flow<Employee?> = getById(id).map { records ->
+    override fun getEmployee(id: Int): Flow<Employee?> = getById(id).map { records ->
         records.firstOrNull()?.toDomain()
     }
 
