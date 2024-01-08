@@ -5,12 +5,10 @@ import dagger.BindsInstance
 import dagger.Component
 import ru.otus.di.domain.dao.EmployeeDao
 import ru.otus.di.domain.dao.EmployeeDetailsDao
-import ru.otus.di.domain.net.EmployeeService
-import ru.otus.di.net.NetModule
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [DbModule::class, NetModule::class])
+@Component(modules = [DbModule::class])
 interface AppComponent {
 
     @Component.Factory
@@ -21,6 +19,4 @@ interface AppComponent {
     fun employeeDao(): EmployeeDao
 
     fun employeeDetailsDao(): EmployeeDetailsDao
-
-    fun employeeService(): EmployeeService
 }
