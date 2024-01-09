@@ -12,3 +12,4 @@
 3. Базовый компонент и модули Dagger2
 4. Component dependency
 5. Subcomponents
+6. Assisted inject
