@@ -4,12 +4,11 @@ import dagger.Subcomponent
 import ru.otus.di.ActivityScope
 
 @ActivityScope
-@Subcomponent(modules = [EmployeeActivityModule::class])
+@Subcomponent
 interface EmployeeActivitySubcomponent {
 
     @Subcomponent.Builder
     interface Builder {
-        fun employeeModule(m: EmployeeActivityModule): Builder
         fun build(): EmployeeActivitySubcomponent
     }
 

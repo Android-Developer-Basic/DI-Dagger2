@@ -37,9 +37,9 @@ class EmployeeActivity : AppCompatActivity() {
      * [EmployeeActivitySubcomponent.inject]
      */
     @Inject
-    lateinit var vmFactory: EmployeeViewModel.Factory
+    lateinit var vmFactoryFactory: EmployeeViewModel.FactoryFactory
 
-    private val model: EmployeeViewModel by viewModels { vmFactory }
+    private val model: EmployeeViewModel by viewModels { vmFactoryFactory.create(intent.employeeId) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +48,6 @@ class EmployeeActivity : AppCompatActivity() {
         // Используйте, когда невозможно использовать конструктор
         application.component
             .employeeActivityComponent()
-            .employeeModule(EmployeeActivityModule(intent.employeeId))
             .build()
             .inject(this)
 
