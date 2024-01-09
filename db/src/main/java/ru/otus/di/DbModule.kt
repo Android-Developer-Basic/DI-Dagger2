@@ -4,9 +4,12 @@ import android.content.Context
 import androidx.room.Room
 import dagger.Module
 import dagger.Provides
+import dagger.multibindings.IntoSet
 import ru.otus.di.db.EmployeeDb
+import ru.otus.di.domain.AppInitializer
 import ru.otus.di.domain.dao.EmployeeDao
 import ru.otus.di.domain.dao.EmployeeDetailsDao
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
@@ -22,4 +25,8 @@ class DbModule {
 
     @Provides
     fun employeeDetailsDao(db: EmployeeDb): EmployeeDetailsDao = db.employees()
+
+    @Provides
+    @IntoSet
+    fun dbInitializer(@Named("tag") tag: String): AppInitializer = DbInitializer(tag)
 }

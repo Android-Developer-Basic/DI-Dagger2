@@ -7,12 +7,11 @@ import dagger.Component
 import ru.otus.di.ActivityScope
 import ru.otus.di.AppComponent
 import ru.otus.di.domain.data.Employee
-import ru.otus.di.net.NetModule
 
 @ActivityScope
 @Component(
     dependencies = [AppComponent::class],
-    modules = [MainActivityModule::class, NetModule::class]
+    modules = [MainActivityModule::class]
 )
 interface MainActivityComponent {
     @Component.Factory
