@@ -13,3 +13,4 @@
 4. Component dependency
 5. Subcomponents
 6. Assisted inject
+7. Multibinding
