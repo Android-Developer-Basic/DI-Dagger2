@@ -1,4 +1,4 @@
-package ru.otus.di
+package ru.otus.di.details
 
 import android.app.Application
 import androidx.lifecycle.ViewModel
@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.stateIn
+import ru.otus.di.MyDiApplication
 import ru.otus.di.domain.dao.EmployeeDetailsDao
 import ru.otus.di.domain.data.Employee
 

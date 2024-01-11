@@ -18,6 +18,7 @@ import ru.otus.di.domain.dao.EmployeeDao
 import ru.otus.di.domain.data.Data
 import ru.otus.di.domain.data.Employee
 import ru.otus.di.domain.net.EmployeeService
+import ru.otus.di.main.MainViewModel
 import java.time.ZonedDateTime
 import kotlin.test.assertEquals
 

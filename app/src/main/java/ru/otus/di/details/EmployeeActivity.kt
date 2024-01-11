@@ -1,4 +1,4 @@
-package ru.otus.di
+package ru.otus.di.details
 
 import android.app.Activity
 import android.content.Intent
@@ -10,6 +10,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import kotlinx.coroutines.launch
+import ru.otus.di.R
 import ru.otus.di.databinding.ActivityEmployeeBinding
 import ru.otus.di.domain.data.Employee
 

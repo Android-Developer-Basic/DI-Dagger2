@@ -1,4 +1,4 @@
-package ru.otus.di
+package ru.otus.di.main
 
 import android.app.Application
 import android.util.Log
@@ -12,6 +12,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import ru.otus.di.MyDiApplication
 import ru.otus.di.domain.dao.EmployeeDao
 import ru.otus.di.domain.data.Data
 import ru.otus.di.domain.data.Employee

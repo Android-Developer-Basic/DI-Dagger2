@@ -13,8 +13,9 @@ import ru.otus.di.net.data.EmployeeDto
 import ru.otus.di.net.data.toDomain
 import java.time.ZonedDateTime
 import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 
-class EmployeeServiceImpl : EmployeeService {
+class EmployeeServiceImpl @Inject constructor() : EmployeeService {
     private val okHttp = OkHttpClient.Builder()
         .connectTimeout(60, TimeUnit.SECONDS)
         .readTimeout(60, TimeUnit.SECONDS)

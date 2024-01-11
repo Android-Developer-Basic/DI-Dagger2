@@ -1,4 +1,4 @@
-package ru.otus.di
+package ru.otus.di.main
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import ru.otus.di.R
 import ru.otus.di.domain.data.Employee
 
 

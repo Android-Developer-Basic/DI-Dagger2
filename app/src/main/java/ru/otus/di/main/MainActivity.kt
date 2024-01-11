@@ -1,4 +1,4 @@
-package ru.otus.di
+package ru.otus.di.main
 
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -9,7 +9,9 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.ConcatAdapter
 import com.google.android.material.divider.MaterialDividerItemDecoration
 import kotlinx.coroutines.launch
+import ru.otus.di.R
 import ru.otus.di.databinding.ActivityMainBinding
+import ru.otus.di.details.EmployeeActivity
 
 class MainActivity : AppCompatActivity() {
     private val employeeAdapter = EmployeeAdapter {

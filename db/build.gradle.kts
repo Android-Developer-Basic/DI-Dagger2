@@ -42,6 +42,9 @@ dependencies {
     implementation("androidx.room:room-ktx:2.6.1")
     ksp("androidx.room:room-compiler:2.6.1")
 
+    implementation("com.google.dagger:dagger:2.55")
+    ksp("com.google.dagger:dagger-compiler:2.55")
+
     testImplementation("junit:junit:4.13.2")
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.jetbrains.kotlin:kotlin-test:2.1.10")
