@@ -52,8 +52,8 @@ class MainViewModel(
 
         @Suppress("UNCHECKED_CAST")
         override fun <T : ViewModel> create(modelClass: Class<T>): T = MainViewModel(
-            diApp.employeeDao,
-            diApp.net
+            diApp.component.employeeDao(),
+            diApp.component.employeeService()
         ) as T
     }
 }

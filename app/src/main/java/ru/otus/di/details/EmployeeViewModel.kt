@@ -30,7 +30,7 @@ class EmployeeViewModel(
 
         @Suppress("UNCHECKED_CAST")
         override fun <T : ViewModel> create(modelClass: Class<T>): T = EmployeeViewModel(
-            diApp.employeeDetailsDao,
+            diApp.component.employeeDetailsDao(),
             employeeId
         ) as T
     }
