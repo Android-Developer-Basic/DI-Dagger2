@@ -1,4 +1,4 @@
-package ru.otus.di
+package ru.otus.di.main
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import ru.otus.di.R
 
 class HeaderAdapter : RecyclerView.Adapter<HeaderAdapter.Holder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder = Holder(
